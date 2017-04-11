@@ -331,6 +331,12 @@ function updateAllVersion(version) {
   /** @type {!Error} */
   var error;
 
+  if ( !is.str(version) ) {
+    error = new TypeError('invalid `version` type (must be a string)');
+    err('Failed `version` Task', error, { version: version });
+    throw error;
+  }
+
   if ( !isSemVersion(version) ) {
     error = new Error('invalid `version` (must be a semantic version)');
     err('Failed `version` Task', error, { version: version });
@@ -360,6 +366,12 @@ function updateNPMVersion(version) {
   var content;
   /** @type {!Error} */
   var error;
+
+  if ( !is.str(version) ) {
+    error = new TypeError('invalid `version` type (must be a string)');
+    err('Failed `version` Task', error, { version: version });
+    throw error;
+  }
 
   if ( !isSemVersion(version) ) {
     error = new Error('invalid `version` (must be a semantic version)');
